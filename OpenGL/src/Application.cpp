@@ -34,11 +34,20 @@ int main(void)
           0.0f, 0.5f,
          0.5f, -0.5f
     };
-
+    //setting up vertex buffer
     unsigned int buffer;
     glGenBuffers(1, &buffer);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
+
+    //setting up vertex attributes
     glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float),positions,GL_STATIC_DRAW);
+
+    //enable vertex attribute array
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0,2,GL_FLOAT,GL_FALSE,2*sizeof(float),0);
+
+    //bind buffer
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
