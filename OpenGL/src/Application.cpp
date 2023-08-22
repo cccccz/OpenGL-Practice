@@ -129,7 +129,7 @@ int main(void)
         /* Poll for and process events */
         glfwPollEvents();
     }
-
+    glDeleteProgram(shader);
     glfwTerminate();
     return 0;
 }
