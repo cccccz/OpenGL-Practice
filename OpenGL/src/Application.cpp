@@ -152,15 +152,17 @@ int main(void)
     //    "}\n";
 
     ShaderProgramSource source = ParseShader("res/shaders/Basic2.shader");
-    std::cout << "Vertex" << std::endl;
-    std::cout << source.VertexSource << std::endl;
 
-    std::cout << "Fragment" << std::endl;
-    std::cout << source.FragmentSource << std::endl;
+    //checking  ParseShader output
+    //std::cout << "Vertex" << std::endl;
+    //std::cout << source.VertexSource << std::endl;
+
+    //std::cout << "Fragment" << std::endl;
+    //std::cout << source.FragmentSource << std::endl;
 
 
-    /*unsigned int shader = CreateShader(vertexShader,fragmentShader);
-    glUseProgram(shader);*/
+    unsigned int shader = CreateShader(source.VertexSource,source.FragmentSource);
+    glUseProgram(shader);
     //bind buffer
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -179,7 +181,7 @@ int main(void)
         /* Poll for and process events */
         glfwPollEvents();
     }
-    //glDeleteProgram(shader);
+    glDeleteProgram(shader);
     glfwTerminate();
     return 0;
 }
